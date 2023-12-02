@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AcessHome.Views.LoginRounded"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    FlyoutItem.IsVisible="False">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="220" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Path
+            Data="m0.30001,0l449,0l0,128.48327c-122.5,64.30167 -332.5,65.89076 -449,7.2429c0,-45.25313 0,-90.47304 0,-135.72617z"
+            Fill="#2196f3"
+            Stroke="#000" />
+
+        <StackLayout>
+            <Frame
+                Margin="0,100,0,0"
+                Padding="0"
+                BackgroundColor="SkyBlue"
+                CornerRadius="30"
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                WidthRequest="60">
+                <Image
+                    Margin="0"
+                    Aspect="AspectFill"
+                    Source="https://www.findool.com/images/avatars/avatar.png" />
+            </Frame>
+        </StackLayout>
+
+        <Grid
+            Grid.Row="1"
+            Margin="20,20,20,0"
+            RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <Label
+                Grid.Row="1"
+                Margin="0"
+                Padding="0"
+                FontAttributes="Bold"
+                FontSize="40"
+                HorizontalOptions="Center"
+                Text="AccessHome" />
+
+            <Label
+                Grid.Row="2"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Bienvenido!"
+                VerticalOptions="End" />
+
+            <StackLayout
+                Grid.Row="3"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="LightGreen"
+                    CornerRadius="30"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="5"
+                            Padding="0"
+                            BackgroundColor="SkyBlue"
+                            CornerRadius="30"
+                            HeightRequest="40"
+                            WidthRequest="40">
+                            <Image
+                                Margin="0"
+                                Aspect="Fill"
+                                Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" />
+                        </Frame>
+                        <Entry
+                            x:Name="EntryUserName"
+                            Margin="0,0,20,0"
+                            FontAttributes="Bold"
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="Usuario"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </Frame> 
+                <!--  Frame usuario  -->
+                <Frame
+                    Margin="0,15,0,0"
+                    Padding="0"
+                    BackgroundColor="Transparent"
+                    BorderColor="LightGreen"
+                    CornerRadius="30"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Frame
+                            Margin="5"
+                            Padding="0"
+                            BackgroundColor="SkyBlue"
+                            CornerRadius="30"
+                            HeightRequest="40"
+                            WidthRequest="40">
+                            <Image
+                                Margin="0"
+                                Aspect="Fill"
+                                Source="https://cdn0.iconfinder.com/data/icons/basic-ui-elements-round/700/09_lock-256.png" />
+                        </Frame>
+                        <Entry
+                            x:Name="EntryPassword"
+                            Margin="0,0,20,0"
+                            FontAttributes="Bold"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Ingresar clave"
+                            TextColor="Black"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </Frame> 
+                <!--  Frmae clave  -->
+
+                <Button
+                    x:Name="BtnIniciarSesion"
+                    Margin="0,15,0,0"
+                    BackgroundColor="Black"
+                    Clicked="BtnIniciarSesion_Clicked"
+                    CornerRadius="30"
+                    FontAttributes="Bold"
+                    Text="Ingresar"
+                    TextColor="White" />
+
+            </StackLayout>
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

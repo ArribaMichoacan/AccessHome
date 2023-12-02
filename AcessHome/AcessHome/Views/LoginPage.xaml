@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AcessHome.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <Frame
+            Padding="24"
+            BackgroundColor="#2196F3"
+            CornerRadius="0">
+            <Label
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                Text="AcessHome"
+                TextColor="White" />
+        </Frame>
+
+        <Path
+            Data="m0.30001,0l449,0l0,128.48327c-122.5,64.30167 -332.5,65.89076 -449,7.2429c0,-45.25313 0,-90.47304 0,-135.72617z" 
+            Fill="#2196f3"
+            Stroke="#000" />
+
+        <BoxView HeightRequest="130" Color="Transparent" />
+
+
+
+        <Entry
+            x:Name="txtUserName"
+            HorizontalTextAlignment="Center"
+            Placeholder="Ingresa el nombre de usuario"
+            TextColor="Black" />
+
+        <Entry
+            x:Name="txtUserPassword"
+            HorizontalTextAlignment="Center"
+            IsPassword="True"
+            Placeholder="Ingresa Contraseña"
+            TextColor="Black" />
+
+
+        <Button
+            x:Name="BtnIniciarSesion"
+            Margin="0,10,0,0"
+            BackgroundColor="Black"
+            BorderWidth="1.5"
+            Clicked="BtnIniciarSesion_Clicked"
+            CornerRadius="50"
+            Text="Iniciar sesión"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+    </StackLayout>
+
+</ContentPage>

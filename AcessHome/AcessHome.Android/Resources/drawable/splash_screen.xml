@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+	<!--Color de fondo-->
+	<item>
+		<color android:color="@color/splash_background"/>
+	</item>
+
+	<!-- logo-->
+	<item>
+		<bitmap
+		  android:src="@drawable/puertacerrada"
+				android:tileMode="disabled"
+				android:gravity="center_horizontal"
+      />
+
+	</item>
+
+
+</layer-list>
