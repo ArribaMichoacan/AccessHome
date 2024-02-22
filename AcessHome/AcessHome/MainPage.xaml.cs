@@ -21,12 +21,14 @@ namespace AcessHome
         {
             InitializeComponent();
             _usuario = usuario;
+            BindingContext = new ViewModels.MainViewModel(Navigation);
             
         } 
 
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new ViewModels.MainViewModel(Navigation);
         }
         
       
@@ -44,7 +46,7 @@ namespace AcessHome
         {
             try
             {
-                //var data = Encoding.ASCII.GetBytes("1");
+                var data = Encoding.ASCII.GetBytes("1");
                 //await _bluetoothConnection.TransmitAsync(data);
                 DataBaseHelper baseHelper = await DataBaseHelper.instance;
                 _usuario.idUsuario = await baseHelper.GetUserId(_usuario);

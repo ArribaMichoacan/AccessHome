@@ -57,6 +57,15 @@ namespace AcessHome.Data
             return result;
         }
 
+        public async Task<List<Usuario>> GetAllUsers()
+        {
+            var query = @"SELECT * FROM Usuarios";
+
+            var result = await Database.QueryAsync<Usuario>(query);
+
+            return result;
+        }
+
         public async Task<List<Visita>> GetVisitasByUser(string nombreUsuario)
         {
             var query = @"SELECT idUsuario FROM Usuario WHERE nombreUsuario = ?";
@@ -84,7 +93,7 @@ namespace AcessHome.Data
 
         public async Task<int> CheckCredentials(Usuario usuario)
         {
-            var query = @"SELECT * FROM Usuario WHERE nombre nombreUsuario = ? AND passWord =?";
+            var query = @"SELECT * FROM Usuarios WHERE nombre nombreUsuario = ? AND passWord =?";
 
             var result = await Database.Table<Usuario>().Where(u => u.nombreUsuario == usuario.nombreUsuario && u.passWord == usuario.passWord).FirstOrDefaultAsync();
 

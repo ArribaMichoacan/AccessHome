@@ -1,5 +1,6 @@
 ﻿using AcessHome.Data;
 using AcessHome.Models;
+using AcessHome.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,32 +17,32 @@ namespace AcessHome.Views
     {
         public LoginRounded()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            BindingContext = new LoginViewModel(Navigation);
         }
 
         private async void BtnIniciarSesion_Clicked(object sender, EventArgs e)
         {
             try
             {
-                Usuario usuario = new Usuario();
+                Application.Current.MainPage = new AppShell();
 
-                usuario.nombreUsuario = EntryUserName.Text;
+                //Usuario usuario = new Usuario();
 
-                usuario.passWord = EntryPassword .Text;
+                //usuario.nombreUsuario = EntryUserName.Text;
 
-                DataBaseHelper baseHelper = await DataBaseHelper.instance;
+                //usuario.passWord = EntryPassword .Text;
 
+                //DataBaseHelper baseHelper = await DataBaseHelper.instance;                
 
-                //await baseHelper.saveUsuarioInfo(usuario);
-
-                if (await baseHelper.CheckCredentials(usuario) == 1)
-                {
-                    await Navigation.PushAsync(new MainPage(usuario));
-                }
-                else
-                {
-                    await DisplayAlert("Aviso", "Credenciales incorrectas", "Cerrar");
-                }
+                //if (await baseHelper.CheckCredentials(usuario) == 1)
+                //{
+                //    await Navigation.PushAsync(new MainPage(usuario));
+                //}
+                //else
+                //{
+                //    await DisplayAlert("Aviso", "Credenciales incorrectas", "Cerrar");
+                //}
 
             }
             catch (Exception ex)

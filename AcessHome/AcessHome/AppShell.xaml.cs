@@ -9,10 +9,10 @@ using Xamarin.Forms.Xaml;
 
 namespace AcessHome
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainP : FlyoutPage
+   
+    public partial class AppShell : Shell
     {
-        public MainP()
+        public AppShell()
         {
             InitializeComponent();
         }

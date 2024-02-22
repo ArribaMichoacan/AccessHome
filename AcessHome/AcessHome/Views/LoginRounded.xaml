@@ -2,8 +2,7 @@
 <ContentPage
     x:Class="AcessHome.Views.LoginRounded"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    FlyoutItem.IsVisible="False">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="220" />
@@ -84,10 +83,11 @@
                             <Image
                                 Margin="0"
                                 Aspect="Fill"
-                                Source="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_user2-256.png" />
+                                Source="{Binding UrlImage}" />
                         </Frame>
                         <Entry
                             x:Name="EntryUserName"
+                            Text="{Binding UserName}"
                             Margin="0,0,20,0"
                             FontAttributes="Bold"
                             HorizontalOptions="FillAndExpand"
@@ -95,7 +95,7 @@
                             TextColor="Black"
                             VerticalOptions="Center" />
                     </StackLayout>
-                </Frame> 
+                </Frame>
                 <!--  Frame usuario  -->
                 <Frame
                     Margin="0,15,0,0"
@@ -120,6 +120,7 @@
                         <Entry
                             x:Name="EntryPassword"
                             Margin="0,0,20,0"
+                            Text="{Binding UserPass}"
                             FontAttributes="Bold"
                             HorizontalOptions="FillAndExpand"
                             IsPassword="True"
@@ -127,18 +128,38 @@
                             TextColor="Black"
                             VerticalOptions="Center" />
                     </StackLayout>
-                </Frame> 
+                </Frame>
                 <!--  Frmae clave  -->
 
                 <Button
                     x:Name="BtnIniciarSesion"
                     Margin="0,15,0,0"
                     BackgroundColor="Black"
-                    Clicked="BtnIniciarSesion_Clicked"
+                    Command="{Binding LogInCommand}"
                     CornerRadius="30"
                     FontAttributes="Bold"
                     Text="Ingresar"
                     TextColor="White" />
+
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="¿No tienes una cuenta? " />
+
+                            <Span
+                                Text=" Registrate"
+                                FontAttributes="Bold"
+                                TextDecorations="Underline" />
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Label.GestureRecognizers>
+
+                </Label>
+
 
             </StackLayout>
         </Grid>

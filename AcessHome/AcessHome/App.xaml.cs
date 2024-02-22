@@ -10,7 +10,10 @@ namespace AcessHome
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginRounded());
+             MainPage = new NavigationPage(new LoginRounded());
+
+            // MainPage = new AppShell();
+
         }
 
         protected override void OnStart()

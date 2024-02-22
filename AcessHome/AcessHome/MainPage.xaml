@@ -2,7 +2,8 @@
 <ContentPage
     x:Class="AcessHome.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    FlyoutItem.IsVisible="True">
 
     <StackLayout>
 
@@ -10,9 +11,10 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
+                
                 <Label
                     Grid.Column="1"
                     Padding="30,10,10,0"
@@ -21,6 +23,9 @@
                     HorizontalOptions="StartAndExpand"
                     Text="AcessHome"
                     TextColor="#414141" />
+
+                <Label Grid.Column="2" Text="Ramon"/>
+
                 <Image
                     Grid.Column="0"
                     Margin="0,0,-40,10"
@@ -80,7 +85,7 @@
                         Grid.Row="1"
                         x:Name="BtnCerrar"
                         BackgroundColor="Red"
-                        Clicked="BtnCerrar_Clicked"                        
+                        Clicked="BtnCerrar_Clicked"
                         IsEnabled="False"
                         Text="Cerrar"
                         TextColor="White"
@@ -90,8 +95,8 @@
 
             </Frame>
         </Grid>
-        
-                
+
+
 
         <Grid HeightRequest="300">
             <Frame BorderColor="Silver" Margin="10,0,10,10">
@@ -101,8 +106,14 @@
                     VerticalOptions="CenterAndExpand">
                     <ListView.Header>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Usuario      |" TextColor="Black" FontAttributes="Bold"/>
-                            <Label Text="Visita" TextColor="Black" FontAttributes="Bold"/>
+                            <Label
+                                Text="Usuario      |"
+                                TextColor="Black"
+                                FontAttributes="Bold" />
+                            <Label
+                                Text="Visita"
+                                TextColor="Black"
+                                FontAttributes="Bold" />
                         </StackLayout>
                     </ListView.Header>
 
@@ -110,7 +121,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding usuarioId}"/>
+                                    <Label Text="{Binding usuarioId}" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -118,10 +129,10 @@
                 </ListView>
             </Frame>
         </Grid>
-        
-        
-        
-        
+
+
+
+
     </StackLayout>
 
 </ContentPage>
