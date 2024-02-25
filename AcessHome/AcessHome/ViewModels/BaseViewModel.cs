@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AcessHome.ViewModels
@@ -28,12 +29,13 @@ namespace AcessHome.ViewModels
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            //var handler = PropertyChanged;
+            //if (handler != null)
+            //{
+            //    handler(this, new PropertyChangedEventArgs(propertyName));
+            //}
         }
 
         public async Task DisplayAlert(string title, string message, string cancel)
@@ -46,18 +48,31 @@ namespace AcessHome.ViewModels
             return await Application.Current.MainPage.DisplayAlert(title, message, accept, cancel);
         }
 
-        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+
+        protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
         {
-            if (EqualityComparer<T>.Default.Equals(field, value))
-            {
+            if (EqualityComparer<T>.Default.Equals(backingStore, value))
                 return false;
-            }
 
-            field = value;
+            backingStore = value;
+            onChanged?.Invoke();
             OnPropertyChanged(propertyName);
-
             return true;
         }
+
+
+        //protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        //{
+        //    if (EqualityComparer<T>.Default.Equals(field, value))
+        //    {
+        //        return false;
+        //    }
+
+        //    field = value;
+        //    OnPropertyChanged(propertyName);
+
+        //    return true;
+        //}
 
         private string _title;
         public string Title
@@ -92,6 +107,8 @@ namespace AcessHome.ViewModels
 
             OnPropertyChanged(propertyName);
         }
+
+      
 
 
     }

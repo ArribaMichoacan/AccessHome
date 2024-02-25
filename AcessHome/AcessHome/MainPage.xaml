@@ -14,7 +14,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                
+
                 <Label
                     Grid.Column="1"
                     Padding="30,10,10,0"
@@ -24,7 +24,7 @@
                     Text="AcessHome"
                     TextColor="#414141" />
 
-                <Label Grid.Column="2" Text="Ramon"/>
+                <Label Grid.Column="2" Text="Ramon" />
 
                 <Image
                     Grid.Column="0"
@@ -66,16 +66,15 @@
                         x:Name="BtnConectar"
                         Grid.ColumnSpan="4"
                         BackgroundColor="Black"
-                        Clicked="BtnConectar_Clicked"
+                        Command="{Binding ConectarCommand}"
                         Text="Conectar dispositivo"
                         TextColor="White" />
-
                     <Button
                         x:Name="BtnAbrir"
                         Grid.Row="1"
                         Grid.Column="1"
                         BackgroundColor="Green"
-                        Clicked="BtnAbrir_Clicked"
+                        Command="{Binding ConectarCommand}"
                         IsEnabled="False"
                         Text="Abrir"
                         TextColor="White"
@@ -85,7 +84,7 @@
                         Grid.Row="1"
                         x:Name="BtnCerrar"
                         BackgroundColor="Red"
-                        Clicked="BtnCerrar_Clicked"
+                        Command="{Binding CerrarCommand}"
                         IsEnabled="False"
                         Text="Cerrar"
                         TextColor="White"
@@ -95,44 +94,6 @@
 
             </Frame>
         </Grid>
-
-
-
-        <Grid HeightRequest="300">
-            <Frame BorderColor="Silver" Margin="10,0,10,10">
-                <ListView
-                    x:Name="listInfo"
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand">
-                    <ListView.Header>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                Text="Usuario      |"
-                                TextColor="Black"
-                                FontAttributes="Bold" />
-                            <Label
-                                Text="Visita"
-                                TextColor="Black"
-                                FontAttributes="Bold" />
-                        </StackLayout>
-                    </ListView.Header>
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding usuarioId}" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Frame>
-        </Grid>
-
-
-
-
     </StackLayout>
 
 </ContentPage>

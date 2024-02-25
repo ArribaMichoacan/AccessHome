@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AcessHome.Views.RegisterView"
+    xmlns:vm="clr-namespace:AcessHome.ViewModels"
+    x:DataType="vm:RegisterViewModel"
+    Title="Registro"
+    NavigationPage.HasBackButton="True">
+    <Grid RowDefinitions="150,*">
+        <Image
+            Margin="0,20,0,0"
+            Grid.Row="0"
+            Source="register.png" />
+        <Frame Margin="10,20,10,0" Grid.Row="1">
+            <StackLayout>
+                <Label
+                    Text="Registro"
+                    HorizontalOptions="Center"
+                    TextColor="Black"
+                    FontSize="Title"
+                    FontAttributes="Bold" />
+                <Entry Placeholder="Nombre de usuario" Text="{Binding UserName}"/>
+
+                <Label HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding MensajeUserName}" TextColor="Red"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                
+                <Entry Placeholder="Contraseña" IsPassword="True" Text="{Binding UserPass}"/>
+
+                <Entry Placeholder="Repite la contraseña" IsPassword="True" Text="{Binding UserPass2}"/>
+
+
+                <Label HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding MensajeUserPass}" TextColor="Red"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Button
+                    Text="Registrarse"
+                    TextColor="White"
+                    BackgroundColor="Black"
+                    CornerRadius="15"
+                    Command="{Binding RegistrarseCommand}"
+                    />
+
+                <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="True" HeightRequest="90"/>
+
+            </StackLayout>
+        </Frame>
+
+
+    </Grid>
+</ContentPage>

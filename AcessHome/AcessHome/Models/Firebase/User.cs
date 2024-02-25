@@ -14,7 +14,7 @@ namespace AcessHome.Models.Firebase
         public string UserPass { get; set; }
 
         public string Admin { get; set; }
-
+                    
 
     }
 }

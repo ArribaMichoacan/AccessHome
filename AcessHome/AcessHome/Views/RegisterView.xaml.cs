@@ -1,6 +1,4 @@
-﻿using AcessHome.Data;
-using AcessHome.Models;
-using AcessHome.ViewModels;
+﻿using AcessHome.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace AcessHome.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginRounded : ContentPage
+    public partial class RegisterView : ContentPage
     {
-        public LoginRounded()
+        public RegisterView()
         {
             InitializeComponent();
-            BindingContext = new LoginViewModel(Navigation);
+            BindingContext = new RegisterViewModel();
         }
-        
     }
 }

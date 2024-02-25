@@ -62,10 +62,14 @@
                 Text="Bienvenido!"
                 VerticalOptions="End" />
 
+
             <StackLayout
                 Grid.Row="3"
                 HorizontalOptions="FillAndExpand"
                 Orientation="Vertical">
+
+                <ActivityIndicator IsVisible="{Binding ShowIndicator}" IsRunning="True" />
+
                 <Frame
                     Padding="0"
                     BackgroundColor="Transparent"
@@ -85,6 +89,9 @@
                                 Aspect="Fill"
                                 Source="{Binding UrlImage}" />
                         </Frame>
+
+
+
                         <Entry
                             x:Name="EntryUserName"
                             Text="{Binding UserName}"
@@ -127,9 +134,17 @@
                             Placeholder="Ingresar clave"
                             TextColor="Black"
                             VerticalOptions="Center" />
+
+
                     </StackLayout>
                 </Frame>
                 <!--  Frmae clave  -->
+
+                <Label
+                    Text="Usuario o Contraseña incorrectos"
+                    TextColor="Red"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsVisible}" />
 
                 <Button
                     x:Name="BtnIniciarSesion"
@@ -155,7 +170,7 @@
                     </Label.FormattedText>
 
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Command="{Binding LoadRegisterViewCommand}" />
                     </Label.GestureRecognizers>
 
                 </Label>
