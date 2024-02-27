@@ -9,17 +9,13 @@
     Shell.FlyoutBehavior="Flyout">
 
 
-    <ShellContent
-        Title="Inicio"            
-        ContentTemplate="{DataTemplate views:AdminView}" />
+    <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:AdminView}" />
 
-    <ShellContent
-        Title="Visitas"        
-        ContentTemplate="{DataTemplate views:VisitasView}" />
+    <ShellContent Title="Visitas" ContentTemplate="{DataTemplate views:VisitasView}" />
 
-    <ShellContent 
-        Title="Usuarios" 
-        ContentTemplate="{DataTemplate views:UsersView}" />
+    <ShellContent Title="Usuarios" ContentTemplate="{DataTemplate views:UsersView}" />
+
+    <ShellContent Title="Solicitudes" ContentTemplate="{DataTemplate views:UsersRequestView}" />
 
 
 </Shell>

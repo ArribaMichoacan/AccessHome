@@ -98,7 +98,7 @@ namespace AcessHome.ViewModels
             try
             {
 
-                await _settings.ObtenerVisitas("2024-02-24");
+               // await _settings.ObtenerVisitas("2024-02-24");
 
                 IsBusy = true; // evitar que se lance 2 veces el proceso
                 ShowIndicator = true; //show activity indicator
@@ -125,7 +125,7 @@ namespace AcessHome.ViewModels
                     }
                     else if (user.Admin == "0")
                     {
-                        await Navigation.PushModalAsync(new MainPage()); //se carga la vista de no admin
+                        await Navigation.PushAsync(new MainPage()); //se carga la vista de no admin
                     }
                 }
             }

@@ -26,7 +26,7 @@ namespace AcessHome.ViewModels
            // Navigation = navigation;
             _btService = new BtService();
             _settings = new FireBaseSettings();
-            BtnAbrir = true;
+            BtnAbrir = false;
             BtnCerrar = false;
         }
         #endregion

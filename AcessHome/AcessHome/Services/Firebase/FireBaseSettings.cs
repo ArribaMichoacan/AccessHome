@@ -8,12 +8,14 @@ using Firebase.Database.Query;
 using Newtonsoft.Json;
 using AcessHome.Models.Firebase;
 using AcessHome.Models;
+using System.Collections.ObjectModel;
 
 namespace AcessHome.Services.Firebase
 {
     public class FireBaseSettings
     {
-        public static FirebaseClient firebaseClient = new FirebaseClient("https://xamarinapp-18d47-default-rtdb.firebaseio.com/");
+        public static FirebaseClient firebaseClient = new FirebaseClient("https://xamarinapp-18d47-default-rtdb.firebaseio.com/"); //samir db
+        //public static FirebaseClient firebaseClient = new FirebaseClient("https://access-home-9f675-default-rtdb.firebaseio.com/"); //fredo db
 
         private readonly string CollectionName = "Usuarios";
         private readonly string CollectionVisitas = "Visitas";
@@ -112,7 +114,7 @@ namespace AcessHome.Services.Firebase
             return false; // hay usuario registrado con ese nombre
         }
 
-        public async Task<List<(string, string)>> ObtenerVisitas(string fecha)
+        public async Task<List<VisitaUser>> ObtenerVisitas(string fecha)
         {
             //consulta para obtener visitas segun la fecha
             var visitas = await firebaseClient
@@ -123,7 +125,9 @@ namespace AcessHome.Services.Firebase
 
             //crear lista vacia
 
-            var lista = new List<(string, string)>();
+            var lista = new List<VisitaUser>();
+
+            VisitaUser visitaUs = new VisitaUser();
 
             foreach (var visita in visitas)
             {
@@ -137,7 +141,63 @@ namespace AcessHome.Services.Firebase
 
                 var fecha2 = visita.Object.visita;
 
-                lista.Add((username, fecha2));
+                visitaUs.userId = username;
+                visitaUs.visita = fecha2;
+
+                lista.Add(visitaUs);
+            }
+
+            return lista;
+        }
+
+        public async Task<ObservableCollection<User>> ObtenerSolicitudesRegistro()
+        {
+            var usuarios = await firebaseClient
+                .Child(CollectionRegistro)
+                .OnceAsync<User>();
+
+            ObservableCollection<User> lista = new ObservableCollection<User>();
+
+            if (usuarios != null)
+            {
+                foreach (var users in usuarios)
+                {
+                    User user = new User();
+                    user.UserKey = users.Key; //key del nodo, sirve para eliminarlo despues
+                    user.UserName = users.Object.UserName;
+                    user.UserPass = users.Object.UserPass;
+                    lista.Add(user);
+                }
+            }
+
+            return lista;
+        }
+
+        public async Task EliminarRegistro(User user)
+        {
+            await firebaseClient.Child(CollectionRegistro).Child(user.UserKey).DeleteAsync();
+        }
+
+        public async Task<ObservableCollection<User>> ObtenerUsuarios()
+        {
+            var users = await firebaseClient.Child(CollectionName).OnceAsync<User>();
+
+            ObservableCollection<User> lista = new ObservableCollection<User>();
+
+            if (users != null)
+            {
+                foreach (var userData in users)
+                {
+                    User user = new User
+                    {
+                        UserKey = userData.Key,
+                        UserName = userData.Object.UserName,
+                        UserPass = userData.Object.UserPass,
+                        Admin = userData.Object.Admin == "0" ? "Usuario normal" : "Administrador"
+                    };
+
+                    lista.Add(user);
+                }
             }
 
             return lista;
@@ -167,12 +227,5 @@ namespace AcessHome.Services.Firebase
         public string UserPass { get; set; }
         public string adminCheck { get; set; }
         public string UserKey { get; set; }
-    }
-
-    public class VisitaUser
-    {
-        public string userId { get; set; }
-
-        public string visita { get; set; }
     }
 }

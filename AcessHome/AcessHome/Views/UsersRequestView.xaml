@@ -2,8 +2,10 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="AcessHome.Views.UsersView"
-    Title="Usuarios con acceso">
+    xmlns:viewmodels="clr-namespace:AcessHome.ViewModels"
+    x:Class="AcessHome.Views.UsersRequestView"
+    Title="Solicitudes de registro"
+    BackgroundColor="Silver">
     <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
         <Frame
             Grid.ColumnSpan="3"
@@ -11,7 +13,6 @@
             Margin="10,10,10,10"
             Grid.Row="0"
             BorderColor="Black">
-
             <ListView
                 x:Name="listView"
                 ItemsSource="{Binding UserList}"
@@ -20,44 +21,48 @@
                 RefreshCommand="{Binding ObtenerRegistrosCommand}"
                 IsRefreshing="{Binding IsTaskRunning}">
                 <ListView.Header>
-                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="50,20">
-
+                    <StackLayout>
                         <Label
-                            Grid.Column="0"
-                            Grid.Row="0"
                             Text="Nombre de usuario"
                             TextColor="Black"
                             FontAttributes="Bold"
                             FontSize="15" />
-                        <Label
-                            Grid.Column="1"
-                            Grid.Row="0"
-                            Text="Rol"
-                            HorizontalTextAlignment="Center"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            FontSize="15"
-                            />
-                    </Grid>
-                                        
+                        <BoxView HeightRequest="20" BackgroundColor="Transparent" />
+                    </StackLayout>
                 </ListView.Header>
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="80">
 
-                            <Grid ColumnDefinitions="*,*,*">
+                            <Grid ColumnDefinitions="80,*,*,*,80">
                                 <Label
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
                                     Text="{Binding UserName}" />
-                                
-                                <Label 
-                                    Grid.Column="1"
-                                    HorizontalOptions="End"
-                                    Text="{Binding Admin}"
-                                    />
 
+                                <Button
+                                    BackgroundColor="LightGray"
+                                    ImageSource="correct.png"
+                                    HorizontalOptions="Start"
+                                    TextColor="White"
+                                    WidthRequest="40"
+                                    HeightRequest="50"
+                                    CornerRadius="5"
+                                    Grid.Column="4"
+                                    Command="{Binding BindingContext.AceptarCommand, Source={x:Reference listView}}"
+                                    CommandParameter="{Binding .}" />
+                                <Button
+                                    Grid.Column="4"
+                                    HorizontalOptions="End"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    Text="X"
+                                    FontAttributes="Bold"
+                                    CornerRadius="50"
+                                    HeightRequest="40"
+                                    WidthRequest="40"
+                                    Command="{Binding BindingContext.EliminarRegistroCommand, Source={x:Reference listView}}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
@@ -74,5 +79,6 @@
             TextColor="Black"
             FontAttributes="Bold"
             FontSize="25" />
+
     </Grid>
 </ContentPage>

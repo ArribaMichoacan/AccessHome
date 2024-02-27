@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace AcessHome.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UsersView : ContentPage
+    public partial class UsersRequestView : ContentPage
     {
-        public UsersView()
+        public UsersRequestView()
         {
             InitializeComponent();
-            BindingContext = new UsersViewModel();
+            BindingContext = new UsersRequestViewModel();
         }
     }
 }
