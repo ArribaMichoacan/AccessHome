@@ -36,10 +36,9 @@
                             HorizontalTextAlignment="Center"
                             TextColor="Black"
                             FontAttributes="Bold"
-                            FontSize="15"
-                            />
+                            FontSize="15" />
                     </Grid>
-                                        
+
                 </ListView.Header>
 
                 <ListView.ItemTemplate>
@@ -51,12 +50,11 @@
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
                                     Text="{Binding UserName}" />
-                                
-                                <Label 
+
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="End"
-                                    Text="{Binding Admin}"
-                                    />
+                                    Text="{Binding Admin}" />
 
                             </Grid>
                         </ViewCell>
