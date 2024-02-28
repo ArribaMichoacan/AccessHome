@@ -2,6 +2,7 @@
 using AcessHome.Services.Firebase;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -24,10 +25,12 @@ namespace AcessHome.ViewModels
 
         bool _isTaskRunning;
 
-        List<VisitaUser> _visitas;
+       // List<VisitaUser> _visitas;
 
         DateTime _fechaSeleccionada;
 
+
+        private ObservableCollection<VisitaUser> _visitas;
 
         #endregion
         #region CONSTRUCTOR
@@ -64,7 +67,7 @@ namespace AcessHome.ViewModels
         }
 
 
-        public List<VisitaUser> Visitas
+        public ObservableCollection<VisitaUser> Visitas
         {
             get { return _visitas; }
 

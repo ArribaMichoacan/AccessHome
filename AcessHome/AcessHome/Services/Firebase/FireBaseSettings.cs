@@ -15,7 +15,7 @@ namespace AcessHome.Services.Firebase
     public class FireBaseSettings
     {
         public static FirebaseClient firebaseClient = new FirebaseClient("https://xamarinapp-18d47-default-rtdb.firebaseio.com/"); //samir db
-        //public static FirebaseClient firebaseClient = new FirebaseClient("https://access-home-9f675-default-rtdb.firebaseio.com/"); //fredo db
+      //  public static FirebaseClient firebaseClient = new FirebaseClient("https://access-home-9f675-default-rtdb.firebaseio.com/"); //fredo db
 
         private readonly string CollectionName = "Usuarios";
         private readonly string CollectionVisitas = "Visitas";
@@ -114,7 +114,7 @@ namespace AcessHome.Services.Firebase
             return false; // hay usuario registrado con ese nombre
         }
 
-        public async Task<List<VisitaUser>> ObtenerVisitas(string fecha)
+        public async Task<ObservableCollection<VisitaUser>> ObtenerVisitas(string fecha)
         {
             //consulta para obtener visitas segun la fecha
             var visitas = await firebaseClient
@@ -125,7 +125,7 @@ namespace AcessHome.Services.Firebase
 
             //crear lista vacia
 
-            var lista = new List<VisitaUser>();
+            var lista = new ObservableCollection<VisitaUser>();
 
             VisitaUser visitaUs = new VisitaUser();
 

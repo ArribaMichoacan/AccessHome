@@ -62,7 +62,8 @@
                                     CornerRadius="50"
                                     HeightRequest="40"
                                     WidthRequest="40"
-                                    Command="{Binding BindingContext.EliminarRegistroCommand, Source={x:Reference listView}}" />
+                                    Command="{Binding BindingContext.EliminarRegistroCommand, Source={x:Reference listView}}"
+                                    CommandParameter="{Binding .}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

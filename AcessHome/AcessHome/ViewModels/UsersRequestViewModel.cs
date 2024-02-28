@@ -75,6 +75,7 @@ namespace AcessHome.ViewModels
             try
             {
                 //IsTaskRunning = true;
+
                 UserList = await _settings.ObtenerSolicitudesRegistro();
 
                 if(UserList.Count == 0)
