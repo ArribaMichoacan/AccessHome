@@ -2,9 +2,8 @@
 <ContentPage
     x:Class="AcessHome.Views.LoginRounded"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
-    NavigationPage.HasNavigationBar="False"
-    >
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False">
     <Grid BackgroundColor="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="220" />

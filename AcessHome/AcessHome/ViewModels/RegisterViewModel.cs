@@ -98,7 +98,7 @@ namespace AcessHome.ViewModels
                     return;
                 }
 
-                bool resultado = await _settings.VerificarUsuario(userName, UserPass);
+                bool resultado = await _settings.VerificarUsuario(userName);
 
               if(resultado == false) // si es false, ya hay un usuario registrado con ese nombre de usuario
                 {

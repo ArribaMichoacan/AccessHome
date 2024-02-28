@@ -34,7 +34,7 @@
 
     <!--<MenuItem Text="Log out" IconImageSource="logout.png" />-->
 
-   <!--
+    <!--
      <Shell.FlyoutFooter>
 
         <StackLayout HeightRequest="50">
@@ -49,8 +49,8 @@
         </StackLayout>
 
     </Shell.FlyoutFooter>
-    
-    
+
+
     -->
 
 

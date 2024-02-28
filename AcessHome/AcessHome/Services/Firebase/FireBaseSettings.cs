@@ -14,9 +14,13 @@ namespace AcessHome.Services.Firebase
 {
     public class FireBaseSettings
     {
+        //In order to connect with firebase you need to place here your link from your real time database.
+        
         public static FirebaseClient firebaseClient = new FirebaseClient("https://xamarinapp-18d47-default-rtdb.firebaseio.com/"); //samir db
       //  public static FirebaseClient firebaseClient = new FirebaseClient("https://access-home-9f675-default-rtdb.firebaseio.com/"); //fredo db
 
+
+        // Document names in our firebase database
         private readonly string CollectionName = "Usuarios";
         private readonly string CollectionVisitas = "Visitas";
         private readonly string CollectionRegistro = "Registro";
@@ -30,7 +34,7 @@ namespace AcessHome.Services.Firebase
                 Admin = "0"
             };
 
-            if (await VerificarUsuario(userName, userPass))
+            if (await VerificarUsuario(userName))
             {
                 await firebaseClient.Child(CollectionName).PostAsync(userData);
             }
@@ -40,8 +44,15 @@ namespace AcessHome.Services.Firebase
             }
         }
 
+        /// <summary>
+        /// Registered the given user request
+        /// </summary>
+        /// <param name="UserName">User Name</param>
+        /// <param name="UserPass">User password</param>
+        /// <returns></returns>
         public async Task RegistrarUser(string UserName, string UserPass)
         {
+
             var UserData = new
             {
                 UserName = UserName,
@@ -51,6 +62,10 @@ namespace AcessHome.Services.Firebase
             await firebaseClient.Child(CollectionRegistro).PostAsync(UserData);
         }
 
+        /// <summary>
+        /// Register the visit
+        /// </summary>
+        /// <returns></returns>
         public async Task RegistrarVisita()
         {
             string UserKey = UsuarioSingleton.Instancia.UserKey;
@@ -68,6 +83,13 @@ namespace AcessHome.Services.Firebase
             await firebaseClient.Child(CollectionVisitas).PostAsync(visitaData);
         }
 
+
+        /// <summary>
+        /// Gets the given user key
+        /// </summary>
+        /// <param name="userName">UserName</param>
+        /// <param name="userPass">UserPass</param>
+        /// <returns></returns>
         public async Task<User> GetUserKey(string userName, string userPass)
         {
             var user = (await firebaseClient.Child(CollectionName)
@@ -78,6 +100,7 @@ namespace AcessHome.Services.Firebase
 
             if (user != null)
             {
+                
                 UsuarioSingleton.Instancia.UserName = user.Object.UserName;
                 UsuarioSingleton.Instancia.UserPass = user.Object.UserPass;
 
@@ -98,7 +121,12 @@ namespace AcessHome.Services.Firebase
             }
         }
 
-        public async Task<bool> VerificarUsuario(string userName, string userPass)
+        /// <summary>
+        /// Verify is there is an user with the same username
+        /// </summary>
+        /// <param name="userName">User name</param>
+        /// <returns>true if not user registered false if user with the same name</returns>
+        public async Task<bool> VerificarUsuario(string userName)
         {
             var query = firebaseClient.Child(CollectionName)
                 .OrderBy("UserName")
@@ -114,6 +142,11 @@ namespace AcessHome.Services.Firebase
             return false; // hay usuario registrado con ese nombre
         }
 
+        /// <summary>
+        /// Gets all the registered visits in firebase
+        /// </summary>
+        /// <param name="fecha">date param to order by</param>
+        /// <returns>All the visits order by date</returns>
         public async Task<ObservableCollection<VisitaUser>> ObtenerVisitas(string fecha)
         {
             //consulta para obtener visitas segun la fecha
@@ -122,9 +155,7 @@ namespace AcessHome.Services.Firebase
                 .OrderBy("visita")
                 .EqualTo(fecha)
                 .OnceAsync<VisitaUser>();
-
-            //crear lista vacia
-
+          
             var lista = new ObservableCollection<VisitaUser>();
 
             VisitaUser visitaUs = new VisitaUser();
@@ -150,6 +181,12 @@ namespace AcessHome.Services.Firebase
             return lista;
         }
 
+
+
+        /// <summary>
+        /// Obtains all the new users requests
+        /// </summary>
+        /// <returns></returns>
         public async Task<ObservableCollection<User>> ObtenerSolicitudesRegistro()
         {
             var usuarios = await firebaseClient
@@ -173,11 +210,20 @@ namespace AcessHome.Services.Firebase
             return lista;
         }
 
+        /// <summary>
+        /// Deletes the given user
+        /// </summary>
+        /// <param name="user">object with user info</param>
+        /// <returns></returns>
         public async Task EliminarRegistro(User user)
         {
             await firebaseClient.Child(CollectionRegistro).Child(user.UserKey).DeleteAsync();
         }
 
+        /// <summary>
+        /// Obtains all the users in the collection
+        /// </summary>
+        /// <returns>Observable list/collection with the user info from firebase</returns>
         public async Task<ObservableCollection<User>> ObtenerUsuarios()
         {
             var users = await firebaseClient.Child(CollectionName).OnceAsync<User>();
@@ -204,6 +250,11 @@ namespace AcessHome.Services.Firebase
         }
     }
 
+
+    /// <summary>
+    /// Since app purpose was meant only for testing, we didn't really need a real user session
+    /// so in order to keep the user logged info we used a singleton to maintain the info through the app lifecycle
+    /// </summary>
     public class UsuarioSingleton
     {
         private static UsuarioSingleton instancia = null;

@@ -116,6 +116,7 @@ namespace AcessHome.ViewModels
             try
             {
                 IsBusy = true;
+                IsTaskRunning = true;
                 string fecha = FechaSeleccionada.ToString("yyyy-MM-dd");
 
                 Visitas = await _settings.ObtenerVisitas(fecha);
@@ -127,6 +128,7 @@ namespace AcessHome.ViewModels
             }
             finally
             {
+                IsTaskRunning = false;
                 IsBusy = false;
             }
         }
