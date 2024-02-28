@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AcessHome.UserControls.FlyoutHeader">
+    <StackLayout Padding="10">
+        <Label
+            Text="Logged as Admin"
+            FontSize="20"
+            FontAttributes="Bold"
+            TextColor="Black"/>
+    </StackLayout>
+</ContentView>

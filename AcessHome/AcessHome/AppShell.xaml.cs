@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AcessHome.ViewModels;
+using AcessHome.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,9 @@ namespace AcessHome
         public AppShell()
         {
             InitializeComponent();
-        }
+            this.BindingContext = new AppShellViewModel();
+            Routing.RegisterRoute("AdminView", typeof(AdminView));
+        }       
+
     }
 }

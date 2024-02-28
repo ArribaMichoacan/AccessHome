@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:AcessHome.ViewModels"
     x:Class="AcessHome.Views.AdminView"
-    Title="Administrador">
+    Title="Administrador"
+    >
 
     <ContentPage.BindingContext>
         <viewmodels:AdminViewModel />

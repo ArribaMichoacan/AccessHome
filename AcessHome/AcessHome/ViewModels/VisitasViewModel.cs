@@ -127,15 +127,10 @@ namespace AcessHome.ViewModels
                 IsBusy = false;
             }
         }
-
-        public void ProcesoSimple()
-        {
-
-        }
+       
         #endregion
         #region COMANDOS
-        public ICommand ObtenerVisitasCommand => new Command(async () => await ObtenerVisitas());
-        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        public ICommand ObtenerVisitasCommand => new Command(async () => await ObtenerVisitas());        
         #endregion
 
 

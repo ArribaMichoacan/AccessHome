@@ -12,7 +12,9 @@ namespace AcessHome
 
              MainPage = new NavigationPage(new LoginRounded());
 
-            // MainPage = new AppShell();
+            //MainPage = new AppShell();
+
+            
 
         }
 

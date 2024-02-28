@@ -5,17 +5,56 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AcessHome"
     xmlns:views="clr-namespace:AcessHome.Views"
-    xmlns:vm="clr-namespace:AcessHome.ViewModels"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:vm="clr-namespace:AcessHome.ViewModels">
+
+    <ShellContent
+        Title="Inicio"
+        Icon="home.png"
+        ContentTemplate="{DataTemplate views:AdminView}" />
+
+    <ShellContent
+        Title="Visitas"
+        ContentTemplate="{DataTemplate views:VisitasView}"
+        Icon="visitas.png" />
+
+    <ShellContent
+        Title="Usuarios"
+        ContentTemplate="{DataTemplate views:UsersView}"
+        Icon="usuarios.png" />
 
 
-    <ShellContent Title="Inicio" ContentTemplate="{DataTemplate views:AdminView}" />
+    <ShellContent
+        Title="Solicitudes"
+        ContentTemplate="{DataTemplate views:UsersRequestView}"
+        Icon="request.png" />
 
-    <ShellContent Title="Visitas" ContentTemplate="{DataTemplate views:VisitasView}" />
 
-    <ShellContent Title="Usuarios" ContentTemplate="{DataTemplate views:UsersView}" />
 
-    <ShellContent Title="Solicitudes" ContentTemplate="{DataTemplate views:UsersRequestView}" />
+
+
+    <!--<MenuItem Text="Log out" IconImageSource="logout.png" />-->
+
+   <!--
+     <Shell.FlyoutFooter>
+
+        <StackLayout HeightRequest="50">
+            <Button
+                CornerRadius="35"
+                WidthRequest="60"
+                BackgroundColor="Black"
+                HeightRequest="40"
+                Text="Log Out"
+                TextColor="White"
+                Command="{Binding LogOutCommand}" />
+        </StackLayout>
+
+    </Shell.FlyoutFooter>
+    
+    
+    -->
+
+
+
 
 
 </Shell>

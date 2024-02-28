@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AcessHome.Services.Firebase;
+using AcessHome.UserControls;
 using AcessHome.Views;
 using Xamarin.Forms;
 
@@ -82,7 +83,6 @@ namespace AcessHome.ViewModels
             get { return showIndicator; }
 
             set { SetValue(ref showIndicator, value); }
-
         }
 
         #endregion OBJETOS
@@ -97,13 +97,12 @@ namespace AcessHome.ViewModels
             _settings = new FireBaseSettings();
             try
             {
-
-               // await _settings.ObtenerVisitas("2024-02-24");
+                // await _settings.ObtenerVisitas("2024-02-24");
 
                 IsBusy = true; // evitar que se lance 2 veces el proceso
                 ShowIndicator = true; //show activity indicator
 
-                if(string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(UserPass))
+                if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(UserPass))
                 {
                     await DisplayAlert("Aviso", "El usuario o contraseña no pueden estar vacios", "Cerrar");
                     return;
@@ -119,14 +118,18 @@ namespace AcessHome.ViewModels
                 {
                     if (user.Admin == "1")
                     {
-                       
                         Application.Current.MainPage = new AppShell(); //usuario admin, se carga la vista de admin
                                                                        //await Navigation.PushModalAsync(new AppShell());
+                                                                       // await Shell.Current.GoToAsync("AdminView");
+                        AppShell.Current.FlyoutHeader = new FlyoutHeader();
                     }
                     else if (user.Admin == "0")
                     {
                         await Navigation.PushAsync(new MainPage()); //se carga la vista de no admin
                     }
+
+                    UserPass = string.Empty;
+
                 }
             }
             catch (Exception ex)
@@ -140,15 +143,15 @@ namespace AcessHome.ViewModels
             }
         }
 
-
         public async Task LoadRegisterView()
         {
-            if(IsBusy) 
+            if (IsBusy)
                 return;
             try
             {
                 await Navigation.PushAsync(new RegisterView());
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 await DisplayAlert("Error", $"Ocurrio lo siguiente: {ex.Message}", "Cerrar");
             }
