@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:AcessHome.ViewModels"
+    xmlns:fontAwesome="clr-namespace:FontAwesome"
     x:Class="AcessHome.Views.AdminView"
     Title="Administrador"
     >
@@ -67,33 +68,48 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Button
+                    <Button                       
                         Grid.ColumnSpan="4"
-                        BackgroundColor="Black"
-                        Text="Conectar dispositivo"
+                        BackgroundColor="SlateGray"
+                        Text="{x:Static fontAwesome:FontAwesomeIcons.BluetoothB}"                        
+                        FontSize="25"
+                        FontFamily="FAB"
+                        CornerRadius="25"                        
                         Command="{Binding ConectarCommand}"
                         TextColor="White" />
-
+                                       
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
-                        Text="Abrir"
+                        Text="{x:Static fontAwesome:FontAwesomeIcons.Unlock}"
+                        FontFamily="FAS"     
+                        FontSize="25"
+                        CornerRadius="25"
                         BackgroundColor="Green"
                         Command="{Binding AbrirCommand}"
                         IsEnabled="{Binding BtnAbrir}" />
-                    <Button
+
+                    <Button 
+                        Text="{x:Static fontAwesome:FontAwesomeIcons.Lock}" 
+                        TextColor="Black"
+                        FontSize="25"
+                        FontFamily="FAS"
+                        CornerRadius="25"
+                        BackgroundColor="Red"
                         Grid.Row="1"
                         Grid.Column="2"
-                        Text="Cerrar"
-                        BackgroundColor="Red"
                         Command="{Binding CerrarCommand}"
-                        IsEnabled="{Binding BtnCerrar}" />
+                        IsEnabled="{Binding BtnCerrar}"
+                        />
+
 
 
 
                 </Grid>
-
+                
             </Frame>
+            
+
         </Grid>
 
 

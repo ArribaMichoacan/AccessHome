@@ -15,7 +15,7 @@ namespace AcessHome.Services.Firebase
     public class FireBaseSettings
     {
         //In order to connect with firebase you need to place here your link from your real time database.        
-        public static FirebaseClient firebaseClient = new FirebaseClient(""); //place your link here
+        public static FirebaseClient firebaseClient = new FirebaseClient("https://xamarinapp-18d47-default-rtdb.firebaseio.com/"); //place your link here
       
         // Document names in our firebase database
         private readonly string CollectionName = "Usuarios";

@@ -3,7 +3,6 @@ using System.Linq;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using AcessHome.Data;
 using AcessHome.Models;
 using System.Text;
 
