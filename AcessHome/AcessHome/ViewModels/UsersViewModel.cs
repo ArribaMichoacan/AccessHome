@@ -125,7 +125,7 @@ namespace AcessHome.ViewModels
             }
             catch (Exception ex)
             {
-
+                await DisplayAlert("Aviso", $"Ocurrio lo siguiente: {ex.Message}", "Cerrar");
             }
             finally
             {

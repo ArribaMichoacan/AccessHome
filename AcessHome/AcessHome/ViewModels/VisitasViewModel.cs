@@ -12,28 +12,22 @@ namespace AcessHome.ViewModels
 {
     public class VisitasViewModel : BaseViewModel
     {
-
         #region VARIABLES
 
         private FireBaseSettings _settings;
 
-        string _Texto;       
+        private string _Texto;
 
-        string userName;
-        string userPass;
-        string userPass2;
+        private bool _isTaskRunning;       
 
-        bool _isTaskRunning;
-
-       // List<VisitaUser> _visitas;
-
-        DateTime _fechaSeleccionada;
-
+        private DateTime _fechaSeleccionada;
 
         private ObservableCollection<VisitaUser> _visitas;
 
-        #endregion
+        #endregion VARIABLES
+
         #region CONSTRUCTOR
+
         public VisitasViewModel()
         {
             _settings = new FireBaseSettings();
@@ -43,9 +37,10 @@ namespace AcessHome.ViewModels
             IsTaskRunning = false;
 
             Texto = "Obteniendo visitas";
-
         }
-        #endregion
+
+        #endregion CONSTRUCTOR
+
         #region OBJETOS
 
         public bool IsTaskRunning
@@ -53,9 +48,7 @@ namespace AcessHome.ViewModels
             get { return _isTaskRunning; }
 
             set { SetValue(ref _isTaskRunning, value); }
-
         }
-
 
         public DateTime FechaSeleccionada
         {
@@ -66,13 +59,11 @@ namespace AcessHome.ViewModels
             }
         }
 
-
         public ObservableCollection<VisitaUser> Visitas
         {
             get { return _visitas; }
 
-            set { SetValue(ref  _visitas, value); }
-
+            set { SetValue(ref _visitas, value); }
         }
 
         public string Texto
@@ -80,37 +71,14 @@ namespace AcessHome.ViewModels
             get { return _Texto; }
             set { SetValue(ref _Texto, value); }
         }
-     
-        public string UserName
-        {
-            get { return userName; }
 
-            set { SetValue(ref userName, value); }
-        }
+        #endregion OBJETOS
 
+        #region PROCESOS
 
-        public string UserPass
-        {
-            get { return userPass; }
-
-            set { SetValue(ref userPass, value); }
-        }
-
-        public string UserPass2
-        {
-            get { return userPass2; }
-
-            set { SetValue(ref userPass2, value); }
-        }
-
-
-
-
-        #endregion
-        #region PROCESOS      
         public async Task ObtenerVisitas()
         {
-            if(IsBusy) 
+            if (IsBusy)
                 return;
 
             try
@@ -118,11 +86,9 @@ namespace AcessHome.ViewModels
                 IsBusy = true;
                 IsTaskRunning = true;
                 string fecha = FechaSeleccionada.ToString("yyyy-MM-dd");
-
                 Visitas = await _settings.ObtenerVisitas(fecha);
-
-
-            }catch(Exception ex) 
+            }
+            catch (Exception ex)
             {
                 await DisplayAlert("Aviso", $"Ocurrio lo siguiente al obtener las visitas: {ex.Message}", "Cerrar");
             }
@@ -132,12 +98,13 @@ namespace AcessHome.ViewModels
                 IsBusy = false;
             }
         }
-       
-        #endregion
+
+        #endregion PROCESOS
+
         #region COMANDOS
-        public ICommand ObtenerVisitasCommand => new Command(async () => await ObtenerVisitas());        
-        #endregion
 
+        public ICommand ObtenerVisitasCommand => new Command(async () => await ObtenerVisitas());
 
+        #endregion COMANDOS
     }
 }

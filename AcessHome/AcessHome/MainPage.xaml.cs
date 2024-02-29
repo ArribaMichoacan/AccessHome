@@ -1,5 +1,4 @@
-﻿using AcessHome.Data;
-using AcessHome.Models;
+﻿using AcessHome.Models;
 
 using System.Collections.Generic;
 
@@ -16,18 +15,7 @@ namespace AcessHome
             BindingContext = new ViewModels.MainViewModel(Navigation);
             InitializeComponent();
             
-        }
-        
-      
-
-        private async void GetVisitas()
-        {
-            DataBaseHelper bd = await DataBaseHelper.instance;
-            List<Visita> consulta = new List<Visita>();
-            await bd.GetAllVisitasByDate();
-     
-        }
-
+        }                      
        
     }
 }

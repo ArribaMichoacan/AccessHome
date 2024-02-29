@@ -8,6 +8,6 @@
             Text="Logged as Admin"
             FontSize="20"
             FontAttributes="Bold"
-            TextColor="Black"/>
+            TextColor="Black" />
     </StackLayout>
 </ContentView>
