@@ -32,10 +32,8 @@ Cuenta con la siguiente estructura:
 - AppShell.xaml : Estructura general de la aplicación, contiene los elementos del flyout y sus rutas.
 - MainPage : Vista, por default se genera aqui y usualmente es la vista principal y raiz de la aplicación.
 
-# Vistas
-# LoginView
-Primer vista que se carga al correr la aplicación
+# <a href="https://github.com/ArribaMichoacan/AccessHome/wiki">Vistas</a> y <a href="https://github.com/ArribaMichoacan/AccessHome/assets/126541327/3f30f806-7207-456d-9749-813a8a40e6f3">Casos de uso</a>
+Vistas y casos de uso de la aplicación <a href="https://github.com/ArribaMichoacan/AccessHome/assets/126541327/3f30f806-7207-456d-9749-813a8a40e6f3">Casos de uso</a>
 
 
-<img src="https://github.com/ArribaMichoacan/AccessHome/assets/126541327/81639366-dcce-44aa-adfe-083b12a396bb"/>
 
